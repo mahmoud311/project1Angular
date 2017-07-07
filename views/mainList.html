@@ -1,0 +1,59 @@
+<div>
+    <div class="form-inline well well-sm clearfix">
+        <a class="btn btn-warning pull-right" ui-sref="quiz({id:1})">Start Qizz 1</a>
+        <a class="btn btn-warning pull-right" ui-sref="quiz({id:2})">Start Qizz 2</a>
+        <form>
+            <input type="text" placeholder="search" class="form-control" ng-model="search">
+        </form>
+    </div>
+      
+    <div class="row">
+        <div class="col-sm-6" ng-repeat="turtle in vm.data | filter:search">
+            <div class="well well-sm">
+                <div class="row">
+                    <div class="col-md-6">
+                        <img ng-src="{{turtle.image_url}}" class="img-rounded img-responsive">
+                    </div>
+                    <div class="col-md-6">
+                        <h4>{{turtle.type}}</h4>
+                        <p><strong>Location:</strong>{{turtle.location}}</p>
+                        <p><strong>Size:</strong>{{turtle.size}}</p>
+                        <p><strong>avarage Lifespan:</strong>{{turtle.lifespan}}</p>
+                        <p><strong>avarage Diet:</strong>{{turtle.diet}}</p>
+                        <button class="btn btn-primary pull-right" data-toggle="modal" data-target="#turtle-info" ng-click="changeActiveTurtle(turtle)">Learn more</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal" id="turtle-info">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2>{{vm.activeTurtle.type}}</h2>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-xs-8 col-xs-offset-2">
+                            <img ng-src="{{vm.activeTurtle.image_url}}" class="img-rounded img-responsive">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <p></p><strong>Location:</strong>{{vm.activeTurtle.location}}</p>
+                            <p><strong>Size:</strong>{{vm.activeTurtle.size}}</p>
+                            <p><strong>avarage Lifespan:</strong>{{vm.activeTurtle.lifespan}}</p>
+                            <p><strong>avarage Diet:</strong>{{vm.activeTurtle.diet}}</p>
+                        </div>
+                        <br>
+                        <div class="col-xs-12 top-buffer">
+                            <p>{{vm.activeTurtle.description}}</p>
+                            <button class="btn btn-danger pull-right" data-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br><br><br><br><br>
+</div>
